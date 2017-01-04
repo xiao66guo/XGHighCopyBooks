@@ -91,9 +91,9 @@
 -(void)btnWith:(UIButton *)sender sizeFont:(CGFloat)font name:(NSString *)name{
     [sender setTitle:name forState:UIControlStateNormal];
     
-    [sender addTarget:self action:@selector(doubleAndSingleFace:) forControlEvents:UIControlEventTouchUpInside];
+    [sender addTarget:self action:@selector(xg_doubleAndSingleFace:) forControlEvents:UIControlEventTouchUpInside];
     
-    [sender addTarget:self action:@selector(startAnimation) forControlEvents:UIControlEventTouchDown];
+    [sender addTarget:self action:@selector(xg_startAnimation) forControlEvents:UIControlEventTouchDown];
     [sender setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     sender.titleLabel.font = [UIFont boldSystemFontOfSize:font];
     
@@ -104,12 +104,12 @@
 }
 
 #pragma mark - 执行点击的方法并发出通知
--(void)doubleAndSingleFace:(UIButton *)sender{
+-(void)xg_doubleAndSingleFace:(UIButton *)sender{
     [[NSNotificationCenter defaultCenter] postNotificationName:@"doubleAndSingleFace" object:self userInfo:@{@"btn":sender.titleLabel.text}];
 }
 
 #pragma mark - 点击按钮执行的动画
--(void)startAnimation{
+-(void)xg_startAnimation{
     CATransition *anim = [CATransition animation];
     anim.type = @"rippleEffect";
     anim.repeatCount = 1;

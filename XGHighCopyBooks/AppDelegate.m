@@ -15,7 +15,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupDoubleAndSingleFace:) name:@"doubleAndSingleFace" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(xg_setupDoubleAndSingleFace:) name:@"doubleAndSingleFace" object:nil];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
@@ -65,16 +65,16 @@
            viewControllerAfterViewController:(XGPageViewController *)vc{
     // 将pageIndex-1作为参数创建XGPageViewController
     NSUInteger index = vc.pageIndex;
-    //    if (index >= 9) {
-    //        return nil;
-    //    }else{
+//    if (index >= 9) {
+//        return nil;
+//    }else{
     
     return [[XGPageViewController alloc] initWithPageNumber:index + 1];
-    //    }
+//    }
 }
 
 #pragma mark - 接到通知后执行的方法
--(void)setupDoubleAndSingleFace:(NSNotification *)notify{
+-(void)xg_setupDoubleAndSingleFace:(NSNotification *)notify{
     
     NSString *str = notify.userInfo[@"btn"];
     if ([str isEqualToString:@"双面效果"]){
